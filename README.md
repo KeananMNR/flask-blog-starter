@@ -2,6 +2,11 @@
 
 Blog application built with [Flask](https://flask.palletsprojects.com/en/1.1.x/) and [SQLAlchemy](https://www.sqlalchemy.org/).
 
+## Implementation notes
+
+Tags are read from the post title and content. In order to add a tag to your post use '#' followed by the tag name e.g #tagName. Tags can be removed and added to existing posts through the edit function.
+
+
 ## Get started
 
 Start by setting up your development environment. First, make sure that you have _Python 3.7.1_ or later available in your terminal. The easiest way to manage multiple versions of _Python_ is to use [pyenv](https://github.com/pyenv/pyenv).
