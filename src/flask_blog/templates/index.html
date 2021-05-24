@@ -2,6 +2,37 @@
 {% block content %}
   <h1>{% block title %} Welcome to FlaskBlog {% endblock %}</h1>
   {% if not posts %}<p>No posts here so far.</p>{% endif %}
+
+  {#<form action="{{ url_for('posts.filter', tag_names='onFire') }}" method="POST">
+
+    <input type="submit" value="Filter Posts"
+            class="btn btn-danger btn-sm"
+            onclick="return confirm('Are you sure you want to delete this post?')">
+  </form>#}
+
+  <form method="get">
+    <div class="form-group">
+      <label for="tag_name">Tags Filter</label>
+      <input type="text" name="tag_names"
+             placeholder="Filter posts using tag names" class="form-control"
+             value="{{ request.form['tag_names'] or tag_names}}"></input>
+    </div>
+    <div class="form-group">
+      <label for="date_from">Date From</label>
+      <input type="date" name="date_from"
+             placeholder="Select start date" class="datepicker"
+             value="{{ request.form['date_from'] or date_from}}"></input>
+
+      <label for="date_to">Date To</label>
+      <input type="date" name="date_to"
+             placeholder="Select end date" class="datepicker"
+             value="{{ request.form['date_to'] or date_to}}"></input>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-danger">Filter</button>
+    </div>
+  </form>
+
   {% for post in posts %}
     <a href="{{ url_for('posts.post', post_id=post.id) }}">
       <h2>{{ post.title }}</h2>
@@ -10,6 +41,9 @@
     <a href="{{ url_for('posts.edit', post_id=post.id) }}">
       <span class="badge badge-warning">Edit</span>
     </a>
+    {% for tag in post.tags %}
+      <span>{{ tag.name }}</span>
+    {% endfor %}
     <hr>
   {% endfor %}
 {% endblock %}
