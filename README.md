@@ -4,7 +4,9 @@ Blog application built with [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 
 ## Implementation notes
 
-Tags are read from the post title and content. In order to add a tag to your post use '#' followed by the tag name e.g #tagName. Tags can be removed and added to existing posts through the edit function.
+Tags are read from the post title and content. In order to add a tag to your post use '#' followed by the tag name e.g #tagName. Tags can be removed and added to existing posts through the edit function. 
+
+Filter using the tag name without the '#'. You can filter by multiple tags e.g tagOne tagTwo (tag names should be space separated). This will retrieve posts that have at least one of the tags entered. 
 
 
 ## Get started
